@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Item from './components/Item';
+import styled from 'styled-components';
+import { GlobalStyle } from './styles/GlobalStyle';
 
+ 
 function App() {
+  const AppContainer = styled.div`
+    padding: 50px;
+   
+    > .itemList {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    > .itemList > .item {
+      width: calc(100% / 5);
+    }
+  `;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GlobalStyle />
+
+      <AppContainer>
+        <Header/>
+        <div className='itemList'>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+          <div className='item'><Item/></div>
+        </div>
+      </AppContainer>
     </div>
   );
 }
