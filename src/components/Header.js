@@ -1,6 +1,7 @@
 import React from "react";
 import Toggle from './Toggle';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { FaNotesMedical, FaRegNoteSticky } from "react-icons/fa6";
 
 
@@ -9,27 +10,44 @@ function Header() {
         font-size: 30px;
         font-weight: bold;
         margin-bottom: 30px;
-        color: white;
         display: flex;
         align-items: center;
-
-        > span.title {
+        
+        .title {
             margin-left: 10px;
             margin-right: 10px;
         }
 
-        > span.toggle {
-            margin-left: 50px;
+        .add-btn {
+            :hover {
+                color: darkgrey;
+            }
+        }
+
+        > span {
+            color: white;
         }
     `;
-    
 
+    const ToggleContainer = styled.div`
+        margin-left: 50px;
+    `;
+
+    // Link 컴포넌트 스타일 적용
+    const LinkItem = styled(Link)`
+        color: white;
+        text-decoration: none;
+    `;
+    
     return (
         <TitleContainer>
-            <span><FaRegNoteSticky/></span>
-            <span className="title">Notes</span>
-            <span><FaNotesMedical/></span>
-            <span className="toggle"><Toggle/></span>
+            <LinkItem to='/'>
+                <span><FaRegNoteSticky/></span>
+                <span className="title">Notes</span>
+            </LinkItem>
+            <LinkItem to='/add' className='add-btn'><FaNotesMedical/></LinkItem>
+            
+            <ToggleContainer><Toggle/></ToggleContainer>
         </TitleContainer>
     );
 }

@@ -14,18 +14,19 @@ function App() {
   `;
 
   return (
-    <AppContainer>
+    <BrowserRouter>
+      <AppContainer>
       <GlobalStyle/>
       
       <Header/>
       
-      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/add" element={<Add />}></Route>
         </Routes>
-      </BrowserRouter>
-    </AppContainer>
+    
+      </AppContainer>
+    </BrowserRouter>
   );
 }
 
