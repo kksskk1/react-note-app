@@ -3,31 +3,28 @@ import styled from 'styled-components';
 import Item from './Item';
 
 function ItemList() {
-    const ItemListContainer = styled.div`
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-    `;
+    const itemList = {
+        display: 'flex',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+    };
 
-    const ItemBoxContainer = styled.div`
-        width: calc(100% / 5);
-    `;
-    
+    const itemBox = {
+        width: 'calc(100% / 5)',
+    };
+
+    // 로컬 스토리지에 저장된 데이터 조회
+    let item = localStorage.getItem('content');
+    let contentArr = item ? JSON.parse(item) : [];
+
     return (
-        <ItemListContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-            <ItemBoxContainer><Item/></ItemBoxContainer>
-        </ItemListContainer>
+        <div style={itemList}>
+            {contentArr && contentArr.map((content) => (
+                <div style={itemBox}>
+                    <Item content={content}/>
+                </div>
+            ))}
+        </div>
     );
 }
 

@@ -33,6 +33,7 @@ function Add() {
         // 데이터 저장하기
         localStorage.setItem("content", JSON.stringify(contentArr));
 
+        alert('완료');
         // 모든 데이터 삭제
         //localStorage.clear();
     };
