@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function Button({children,...rest}) {
+function Button({onClick,children,...rest}) {
     const StyledButton = styled.button`
         /*공통 스타일*/
         display: inline-flex;
@@ -34,7 +34,7 @@ function Button({children,...rest}) {
         }
     `;
 
-    return <StyledButton {...rest}>{children}</StyledButton>
+    return <StyledButton onClick={onClick} {...rest}>{children}</StyledButton>
 }
 
 

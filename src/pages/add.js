@@ -1,33 +1,50 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
+import TextArea from '../components/TextArea';
+import { useState } from 'react';
 
 
 function Add() {
-    const AddContainer = styled.div`
-        width: 100%;
-        height: 100vh;
-    `;
+    const addpage = {
+        width: '100%',
+        height: '100vh',
+    };
 
-    const TextArea = styled.textarea`
-        width: 100%;
-        height: 100%;
-        font-size: 18px;
-        border-radius: 20px;
-        opacity: 70%;
-        box-sizing: border-box;
-        padding: 20px;
-    `;
+    const btnBox = {
+        paddingTop: '20px',
+        paddingBottom: '50px',
+    };
+    
 
-    const ButtonContainer = styled.div`
-        padding-top: 20px;
-        padding-bottom: 20px;
-    `;
+    const [content, setContent] = useState('');
+
+    const inputContent = (event) => {
+        setContent(event.target.value);
+        console.log(event.target.value);
+    }
+
+
+    // 함수화
+    const add = (event) => {
+        let item = localStorage.getItem('content');
+        let contentArr = item ? JSON.parse(item) : [];
+        contentArr.push(content);
+
+        // 데이터 저장하기
+        localStorage.setItem("content", JSON.stringify(contentArr));
+
+        // 모든 데이터 삭제
+        //localStorage.clear();
+    };
+   
 
     return (
-        <AddContainer>
-            <TextArea/>
-            <ButtonContainer><Button>등록</Button></ButtonContainer>
-        </AddContainer>
+        <div style={addpage}>
+            <TextArea height='80%' value={content} onChange={inputContent}/>
+            <div style={btnBox}>
+                <Button onClick={add}>등록</Button>
+            </div>
+        </div>    
     );
 }
 
