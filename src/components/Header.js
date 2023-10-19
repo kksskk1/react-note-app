@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Toggle from './Toggle';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaNotesMedical, FaRegNoteSticky } from "react-icons/fa6";
+import { BsFillTrashFill } from "react-icons/bs";
 
 
-function Header() {
+function Header(props) {
     const TitleContainer = styled.div`
         font-size: 30px;
         font-weight: bold;
@@ -18,7 +19,7 @@ function Header() {
             margin-right: 10px;
         }
 
-        .add-btn {
+        .icon-btn {
             :hover {
                 color: darkgrey;
             }
@@ -26,6 +27,10 @@ function Header() {
 
         > span {
             color: white;
+        }
+
+        .all-trash {
+            cursor: pointer;
         }
     `;
 
@@ -38,6 +43,11 @@ function Header() {
         color: white;
         text-decoration: none;
     `;
+
+    // 삭제버튼 노출 여부
+    const deleteOpt = props.deleteOpt;
+    const deleteAllBtn = deleteOpt.deleteAllBtn && deleteOpt.deleteAllBtn;
+    const deleteAll = deleteOpt.deleteAll && deleteOpt.deleteAll;
     
     return (
         <TitleContainer>
@@ -45,8 +55,8 @@ function Header() {
                 <span><FaRegNoteSticky/></span>
                 <span className="title">Notes</span>
             </LinkItem>
-            <LinkItem to='/add' className='add-btn'><FaNotesMedical/></LinkItem>
-            
+            <LinkItem to='/add' className='add-btn icon-btn'><FaNotesMedical/></LinkItem>
+            {(deleteAllBtn === 'y') && <span className='all-trash icon-btn' onClick={deleteAll}><BsFillTrashFill/></span>}
             <ToggleContainer><Toggle/></ToggleContainer>
         </TitleContainer>
     );

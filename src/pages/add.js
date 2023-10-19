@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import Header from '../components/Header';
 import Button from '../components/Button';
 import TextArea from '../components/TextArea';
 import { useState } from 'react';
-
 
 function Add() {
     const addpage = {
@@ -40,16 +40,24 @@ function Add() {
         // 데이터 저장하기
         localStorage.setItem("content", JSON.stringify(contentArr));
 
-        alert('완료');
-        // 모든 데이터 삭제
-        //localStorage.clear();
+        alert('저장되었습니다.');
+
+        window.location.replace('/');
+    };
+
+    const deleteOpt = {
+        'deleteAllBtn': 'n',
+        'deleteAll': null,
     };
    
     return (
-        <AddContainer>
-            <TextArea onChange={inputContent}/>
-            <ButtonContainer><Button onClick={add}>등록</Button></ButtonContainer>
-        </AddContainer>    
+        <>
+            <Header deleteOpt={deleteOpt}/>
+            <AddContainer>
+                <TextArea onChange={inputContent}/>
+                <ButtonContainer><Button onClick={add}>등록</Button></ButtonContainer>
+            </AddContainer>
+        </>    
     );
     
     /*return (

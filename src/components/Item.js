@@ -1,10 +1,11 @@
 import React from "react";
-import { createGlobalStyle } from 'styled-components';
+import { styled, createGlobalStyle } from 'styled-components';
 import { BsFillTrashFill } from "react-icons/bs";
 
 function Item(props) {
-    
-    const ItemStyle = createGlobalStyle`
+    const ItemBox = styled.div`
+        width: calc(100% / 5);
+
         .item {
             width: calc(100% - 30px);
             height: 250px;
@@ -21,10 +22,6 @@ function Item(props) {
             cursor: pointer;
         }
     `;
-
-    const itemBox = {
-        width: 'calc(100% / 5)',
-    };
     
     const content = props.content ? props.content : '';
     const index = props.index ? props.index : 0;
@@ -32,13 +29,12 @@ function Item(props) {
     
     return (
         <>
-            <ItemStyle/>
-            <div style={itemBox}>
+            <ItemBox>
                 <div className='item'>
                     <span className='trash' onClick={() => {deleteNote(index)}}><BsFillTrashFill/></span>
                     <div>{content}</div>
                 </div>
-            </div>
+            </ItemBox>
         </>
     );
 }

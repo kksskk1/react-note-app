@@ -6,7 +6,6 @@ import Add from './pages/add.js';
 
 //import Header from './components/Header';
 import { GlobalStyle } from './styles/GlobalStyle';
-import Header from './components/Header';
 
 function App() {
   const AppContainer = styled.div`
@@ -17,13 +16,11 @@ function App() {
     <BrowserRouter>
       <AppContainer>
       <GlobalStyle/>
-      
-      <Header/>
-      
-        <Routes>
-          <Route path="/" element={<Main />}></Route>
-          <Route path="/add" element={<Add />}></Route>
-        </Routes>
+
+      <Routes>
+        <Route path="/" element={<Main />}></Route>
+        <Route path="/add" element={<Add />}></Route>
+      </Routes>
     
       </AppContainer>
     </BrowserRouter>
