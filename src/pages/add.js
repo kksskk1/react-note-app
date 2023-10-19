@@ -10,19 +10,26 @@ function Add() {
         height: '100vh',
     };
 
+    const AddContainer = styled.div`
+        width: 100%;
+        height: 100vh;
+    `;
+
+    const ButtonContainer = styled.div`
+        padding-top: 20px;
+        padding-bottom: 50px;
+    `;
+
     const btnBox = {
         paddingTop: '20px',
         paddingBottom: '50px',
     };
     
 
-    const [content, setContent] = useState('');
-
+    let content = '';
     const inputContent = (event) => {
-        setContent(event.target.value);
-        console.log(event.target.value);
+        content = event.target.value;
     }
-
 
     // 함수화
     const add = (event) => {
@@ -38,15 +45,21 @@ function Add() {
         //localStorage.clear();
     };
    
-
     return (
+        <AddContainer>
+            <TextArea onChange={inputContent}/>
+            <ButtonContainer><Button onClick={add}>등록</Button></ButtonContainer>
+        </AddContainer>    
+    );
+    
+    /*return (
         <div style={addpage}>
-            <TextArea height='80%' value={content} onChange={inputContent}/>
+            <TextArea height='80%' onChange={inputContent}/>
             <div style={btnBox}>
                 <Button onClick={add}>등록</Button>
             </div>
         </div>    
-    );
+    );*/
 }
 
 export default Add;
