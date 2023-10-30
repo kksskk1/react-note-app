@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 
-function Toggle() {
+function Toggle(props) {
     const ToggleContainer = styled.div`
         position: relative;
         cursor: pointer;
@@ -32,8 +32,8 @@ function Toggle() {
         }
     `;
 
-    const [isOn, setisOn] = useState(false);
-    
+    const [isOn, setisOn] = useState(props.isSwitched);
+
     // isOn의 상태를 변경하는 메소드를 구현
     const toggleHandler = () => {
         setisOn(!isOn)

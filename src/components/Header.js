@@ -45,10 +45,21 @@ function Header(props) {
     `;
 
     // 삭제버튼 노출 여부
-    const deleteOpt = props.deleteOpt;
-    const deleteAllBtn = deleteOpt.deleteAllBtn && deleteOpt.deleteAllBtn;
-    const deleteAll = deleteOpt.deleteAll && deleteOpt.deleteAll;
-    
+    const deleteAllBtn = props.deleteAllBtn;
+
+    // 전체 삭제
+    const deleteAll = () => {
+        if(window.confirm('전체 삭제하시겠습니까?')) {
+            localStorage.setItem('content', []);
+            props.setContentArr([]);
+            alert('삭제되었습니다.');
+        }
+    }
+
+    const changeBackground = () => {
+        props.switchHandler();
+    }
+  
     return (
         <TitleContainer>
             <LinkItem to='/'>
@@ -57,7 +68,7 @@ function Header(props) {
             </LinkItem>
             <LinkItem to='/add' className='add-btn icon-btn'><FaNotesMedical/></LinkItem>
             {(deleteAllBtn === 'y') && <span className='all-trash icon-btn' onClick={deleteAll}><BsFillTrashFill/></span>}
-            <ToggleContainer><Toggle/></ToggleContainer>
+            <ToggleContainer onClick={changeBackground}><Toggle isSwitched={props.isSwitched}/></ToggleContainer>
         </TitleContainer>
     );
 }

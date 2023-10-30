@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import TextArea from '../components/TextArea';
 import { useState } from 'react';
 
-function Add() {
+function Add(props) {
     const addpage = {
         width: '100%',
         height: '100vh',
@@ -44,15 +44,10 @@ function Add() {
 
         window.location.replace('/');
     };
-
-    const deleteOpt = {
-        'deleteAllBtn': 'n',
-        'deleteAll': null,
-    };
    
     return (
         <>
-            <Header deleteOpt={deleteOpt}/>
+            <Header isSwitched={props.isSwitched} switchHandler={props.switchHandler} deleteAllBtn='n'/>
             <AddContainer>
                 <TextArea onChange={inputContent}/>
                 <ButtonContainer><Button onClick={add}>등록</Button></ButtonContainer>
